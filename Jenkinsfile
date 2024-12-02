@@ -2,24 +2,11 @@ pipeline {
     agent any
     stages {
         stage('Set Up') {
-            parallel {
-                stage('Start Emulator') {
-                    steps {
-                        bat 'start cmd /k "emulator -avd MyEmulator -no-snapshot-load"'
-                    }
+            stage('Test') {
+                steps {
+                    bat 'start cmd /k "mvn test"'
                 }
-                stage('Start Appium') {
-                    steps {
-                        bat 'start cmd /k "appium"'
-                    }
-                }
-                stage('Test') {
-                    steps {
-                        bat 'ping 127.0.0.1 -n 91 > nul'
-                        bat 'start cmd /k "mvn test"'
-                    }
-                }    
-            }
+            }    
         }
         
     }
