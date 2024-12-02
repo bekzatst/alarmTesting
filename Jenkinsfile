@@ -5,19 +5,18 @@ pipeline {
             parallel {
                 stage('Start Emulator') {
                     steps {
-                        bat 'emulator -avd MyEmulator -no-snapshot-load'
+                        bat 'start cmd /k "emulator -avd MyEmulator -no-snapshot-load"'
                     }
                 }
                 stage('Start Appium') {
                     steps {
-                        bat 'timeout /t 90'
-                        bat 'appium'
+                        bat 'start cmd /k "appium"'
                     }
                 }
                 stage('Test') {
                     steps {
-                        bat 'timeout /t 120'
-                        bat 'mvn test'
+                        timeout /t 90
+                        bat 'start cmd /k "mvn test"'
                     }
                 }    
             }
