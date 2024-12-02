@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    options {
+        wsCleanup()
+    }
     stages {
         stage('Set Up') {
             steps {
