@@ -1,9 +1,14 @@
 pipeline {
     agent any
     stages {
+        stage('Set Up') {
+            steps {
+                bat 'emulator -avd MyEmulator -no-snapshot-load'
+            }
+        }
         stage('Test') {
             steps {
-                bat 'mvn test'
+                bat 'mvn clean test'
             }
             post {
                 always {
