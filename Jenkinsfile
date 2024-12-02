@@ -1,12 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Set Up') {
-            stage('Test') {
-                steps {
-                    bat 'start cmd /k "mvn test"'
-                }
-            }    
+        stage('Test') {
+            steps {
+                bat 'start cmd /k "mvn test"'
+            }
         }
         
     }
