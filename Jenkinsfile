@@ -15,7 +15,7 @@ pipeline {
                 }
                 stage('Test') {
                     steps {
-                        bat 'timeout /t 90'
+                        bat 'ping 127.0.0.1 -n 91 > nul'
                         bat 'start cmd /k "mvn test"'
                     }
                 }    
