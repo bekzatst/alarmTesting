@@ -15,7 +15,7 @@ pipeline {
                 }
                 stage('Test') {
                     steps {
-                        timeout /t 90
+                        bat 'timeout /t 90'
                         bat 'start cmd /k "mvn test"'
                     }
                 }    
