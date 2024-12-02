@@ -8,17 +8,4 @@ pipeline {
         }
         
     }
-    post {
-        always {
-            script {
-                bat 'mvnw.cmd allure:report'
-                archiveArtifacts artifacts: '**/target/allure-results/**', allowEmptyArchive: false
-
-                allure([
-                    results: [[path: 'target/allure-results']],
-                    reportBuildPolicy: 'ALWAYS'
-                ])
-            }
-        }
-    }
 } 
