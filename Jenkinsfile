@@ -10,13 +10,13 @@ pipeline {
                 }
                 stage('Start Appium') {
                     steps {
-                        bat 'timeout /t 30'
+                        bat 'timeout /t 90'
                         bat 'appium'
                     }
                 }
                 stage('Test') {
                     steps {
-                        bat 'timeout /t 45'
+                        bat 'timeout /t 120'
                         bat 'mvn test'
                     }
                 }    
