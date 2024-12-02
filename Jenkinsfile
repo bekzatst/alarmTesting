@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                bat 'start cmd /k "mvn test"'
+                bat 'mvn test"'
             }
         }
         
