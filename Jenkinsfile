@@ -4,10 +4,7 @@ pipeline {
         stage('Set Up') {
             steps {
                 powershell 'Start-Job -ScriptBlock {emulator -avd MyEmulator -no-snapshot-load}'
-                powershell 'Start-Job -ScriptBlock {do
-                                                    { $bootStatus = adb -s emulator-5554 shell getprop sys.boot_completed;
-                                                       Start-Sleep -Seconds 1 }
-                                                       while ($bootStatus -ne "1") }'
+                powershell 'Start-Job -ScriptBlock {do { $bootStatus = adb -s emulator-5554 shell getprop sys.boot_completed; Start-Sleep -Seconds 1 } while ($bootStatus -ne "1") }'
             }
         }
 
