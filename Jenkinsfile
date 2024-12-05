@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Set Up') {
+        stage('Set Up Environment and Run tests') {
             steps {
                 script {
                     powershell '''
@@ -12,7 +12,6 @@ pipeline {
                         adb install -r src/test/resources/apps/base.apk
                         Start-Job -ScriptBlock {cmd /c "appium"}
                         mvn clean test
-                        adb emu kill
                     '''
                 }
             }
