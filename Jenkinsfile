@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     powershell '''
-                        Start-Job -ScriptBlock {emulator -avd MyEmulator -no-snapshot-load}
+                        Start-Job -ScriptBlock {emulator -avd MyEmulator -port 5554 -gpu host -noaudio -no-boot-anim -no-window -no-snapshot-load}
                         Start-Sleep -Seconds 10
                         do { $bootStatus = adb -s emulator-5554 shell getprop sys.boot_completed; Start-Sleep -Seconds 1 } while ($bootStatus -ne "1")
                         adb devices
