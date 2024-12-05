@@ -1,0 +1,69 @@
+{
+  "platformName": "android",
+  "isRemote": true,
+  "remoteConnectionUrl": "http://127.0.0.1:4723",
+  "screensLocation": "integration",
+  "driverSettings": {
+    "android": {
+      "deviceKey": "Android_Emulator",
+      "applicationPath": "./src/test/resources/apps/base.apk",
+      "capabilities": {
+        "platformName": "Android",
+        "automationName": "UIAutomator2",
+        "eventTimings": true,
+        "uiautomator2ServerInstallTimeout": 30000,
+        "appPackage": "com.better.alarm",
+        "autoLaunch": true,
+        "enforceXPath1": true,
+        "autoGrantPermissions": true
+      }
+    },
+    "ios": {
+      "deviceKey": "iOS_Simulator",
+      "applicationPath": "./src/test/resources/apps/TestApp.app.zip",
+      "capabilities": {
+        "platformName": "iOS",
+        "automationName": "XCUITest"
+      }
+    }
+  },
+  "localServiceSettings": {
+    "arguments": {
+      "--allow-insecure": "chromedriver_autodownload"
+    },
+    "capabilities": {
+    }
+  },
+  "timeouts": {
+    "timeoutImplicit": 0,
+    "timeoutCondition": 15,
+    "timeoutPollingInterval": 300,
+    "timeoutCommand": 120
+  },
+  "retry": {
+    "number": 2,
+    "pollingInterval": 300
+  },
+  "logger": {
+    "language": "en"
+  },
+  "elementCache": {
+    "isEnabled": true
+  },
+  "touchActions": {
+    "swipe": {
+      "duration": 1,
+      "retries": 5,
+      "verticalOffset": 0.2,
+      "horizontalOffset": 0.5
+    }
+  },
+  "visualization": {
+    "imageExtension": "png",
+    "maxFullFileNameLength": 255,
+    "defaultThreshold": 0.012,
+    "comparisonWidth": 16,
+    "comparisonHeight": 16,
+    "pathToDumps": "./src/test/resources/visualDumps/"
+  }
+}
