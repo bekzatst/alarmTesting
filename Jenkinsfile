@@ -3,14 +3,23 @@ pipeline {
     stages {
         stage('Set Up') {
             steps {
-                bat 'start /b appium'
-                bat 'start /b emulator -avd MyEmulator -no-snapshot-load'
-                bat 'adb wait-for-device'
+                powershell 'Start-Job -ScriptBlock {emulator -avd MyEmulator -no-snapshot-load}'
+                powershell 'Start-Job -ScriptBlock {do
+                                                    { $bootStatus = adb -s emulator-5554 shell getprop sys.boot_completed;
+                                                       Start-Sleep -Seconds 1 }
+                                                       while ($bootStatus -ne "1") }'
             }
         }
+
+        stage('Install app') {
+            steps {
+                powershell 'adb install -r src/test/resources/apps/base.apk'
+            }
+        }
+
         stage('Test') {
             steps {
-                bat 'mvn clean test'
+                powershell 'mvn clean test'
             }
             post {
                 always {
