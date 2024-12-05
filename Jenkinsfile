@@ -4,7 +4,7 @@ pipeline {
         stage('Set Up') {
             steps {
                 powershell 'avdmanager list avd'
-                powershell 'echo no | avdmanager create avd --force -n testEmu -k 'system-images;android-33;google_apis;x86_64''
+                powershell 'echo no | avdmanager create avd --force -n testEmu -k "system-images;android-33;google_apis;x86_64"'
                 powershell 'Start-Job -ScriptBlock {emulator -avd testEmu -port 5554 -gpu host -noaudio -no-boot-anim -no-window -no-snapshot-load}'
                 powershell 'do { $bootStatus = adb -s emulator-5554 shell getprop sys.boot_completed; Start-Sleep -Seconds 1 } while ($bootStatus -ne "1")'
             }
