@@ -12,6 +12,7 @@ pipeline {
                         adb install -r src/test/resources/apps/base.apk
                         Start-Job -ScriptBlock {cmd /c "appium"}
                         mvn clean test
+                        exit
                     '''
                 }
             }
